@@ -1,0 +1,27 @@
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.status-msg {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+}
+
+.status-msg.error { color: #dc2626; }
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-state p { font-size: 1.2rem; margin-bottom: 0.5rem; }
