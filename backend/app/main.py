@@ -9,8 +9,8 @@ app = FastAPI(title="Fork & Order API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
+    allow_origins=["*"],        # ← Docker-ben egyszerűbb így
+    allow_credentials=False,    # ← credentials=False ha origins="*"
     allow_methods=["*"],
     allow_headers=["*"],
 )

@@ -14,7 +14,7 @@ export default function Navbar() {
         <Link to="/">Menu</Link>
         {isLoggedIn ? (
           <>
-            <Link to="/orders">My Orders</Link>
+            <Link to="/orders">Order History</Link>
             <button onClick={logout} className="btn-logout">Logout</button>
           </>
         ) : (

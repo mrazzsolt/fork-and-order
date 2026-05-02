@@ -1,17 +1,22 @@
 import { useCart } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
 import api from '../api/client'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import './Cart.css'
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, clearCart, total } = useCart()
+  const { isLoggedIn } = useAuth()
   const navigate = useNavigate()
+  const [error, setError] = useState('')
 
   const placeOrder = async () => {
-    if (!localStorage.getItem('token')) {
-      navigate('/login')
+    if (!isLoggedIn) {
+      setError('You need to be logged in to place an order.')
       return
     }
+    setError('')
     try {
       await api.post('/api/orders/', {
         items: items.map(i => ({ food_id: i.id, quantity: i.quantity }))
@@ -19,7 +24,7 @@ export default function Cart() {
       clearCart()
       navigate('/orders')
     } catch {
-      alert('Failed to place order. Please try again.')
+      setError('Failed to place order. Please try again.')
     }
   }
 
@@ -49,6 +54,18 @@ export default function Cart() {
           </div>
         ))}
       </div>
+
+      {error && (
+        <div className="cart-error">
+          ⚠️ {error}
+          {!isLoggedIn && (
+            <button onClick={() => navigate('/login')} className="btn-login-redirect">
+              Go to Login
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="cart-summary">
         <span className="cart-total">Total: {total.toLocaleString('hu-HU')} Ft</span>
         <button className="btn-primary" onClick={placeOrder}>Place Order</button>

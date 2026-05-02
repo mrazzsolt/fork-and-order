@@ -8,11 +8,11 @@ class Order(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    status = Column(String, default="pending")  # pending, preparing, delivered
+    status = Column(String, default="pending")
     total_price = Column(Float, nullable=False)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
-    items = relationship("OrderItem", back_populates="order")
+    items = relationship("OrderItem", back_populates="order", lazy="joined")
 
 class OrderItem(Base):
     __tablename__ = "order_items"
@@ -24,3 +24,4 @@ class OrderItem(Base):
     unit_price = Column(Float, nullable=False)
 
     order = relationship("Order", back_populates="items")
+    food = relationship("Food", lazy="joined")

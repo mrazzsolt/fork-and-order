@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: ./backend
+    container_name: fork-order-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/fork_and_order.db:/app/fork_and_order.db
+    environment:
+      - DATABASE_URL=sqlite:///./fork_and_order.db
+      - SECRET_KEY=supersecretkey-change-in-production
+      - ALLOWED_ORIGINS=http://localhost,http://localhost:80,http://localhost:5173
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - VITE_API_URL=http://localhost:8000
+    container_name: fork-order-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

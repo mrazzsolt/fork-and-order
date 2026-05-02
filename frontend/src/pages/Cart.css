@@ -74,3 +74,26 @@
 }
 
 .empty-state p { font-size: 1.2rem; }
+
+.cart-error {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn-login-redirect {
+  background: var(--primary);
+  color: white;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

@@ -10,7 +10,7 @@ export default function Login() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { login } = useAuth() 
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -18,7 +18,7 @@ export default function Login() {
     setLoading(true)
     try {
       const res = await api.post('/api/auth/login', { email, password })
-      login(res.data.access_token)
+      login(res.data.access_token)  // ← ez frissíti a Context state-et is!
       navigate('/')
     } catch {
       setError('Invalid email or password.')
