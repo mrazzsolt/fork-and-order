@@ -1,30 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import "./Navbar.css";
+import { Link } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
+import './Navbar.css'
 
 export default function Navbar() {
-  const { count } = useCart();
-  const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+  const { count } = useCart()
+  const { isLoggedIn, logout } = useAuth()
 
   return (
     <nav className="navbar">
-      <Link to="/" className="navbar-brand">
-        Fork & Order
-      </Link>
+      <Link to="/" className="navbar-brand">🍴 Fork & Order</Link>
       <div className="navbar-links">
         <Link to="/">Menu</Link>
-        {token ? (
+        {isLoggedIn ? (
           <>
             <Link to="/orders">My Orders</Link>
-            <button onClick={logout} className="btn-logout">
-              Logout
-            </button>
+            <button onClick={logout} className="btn-logout">Logout</button>
           </>
         ) : (
           <>
@@ -37,5 +28,5 @@ export default function Navbar() {
         </Link>
       </div>
     </nav>
-  );
+  )
 }
