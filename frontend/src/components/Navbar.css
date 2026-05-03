@@ -1,68 +1,76 @@
 .navbar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .navbar-brand {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  flex-shrink: 0;
 }
 
 .navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
 }
 
-.navbar-links a:hover {
-    color: var(--primary);
-}
+.navbar-links a:hover { color: var(--primary); }
 
 .cart-btn {
-    background: var(--primary);
-    color: white;
-    padding: 0.4rem 1rem;
-    border-radius: var(--radius);
-    font-weight: 600;
+  background: var(--primary);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .cart-count {
-    background: white;
-    color: var(--primary);
-    border-radius: 999px;
-    padding: 0 0.4rem;
-    font-size: 0.8rem;
-    font-weight: 700;
+  background: white;
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .btn-logout {
-    background: none;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    padding: 0;
+  background: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.btn-logout:hover {
-    color: var(--primary);
-}
+.btn-logout:hover { color: var(--primary); }
 
 @media (max-width: 600px) {
-    .navbar {
-        padding: 0.75rem 1rem;
-    }
+  .navbar { padding: 0.75rem 1rem; }
+  .navbar-links { gap: 0.75rem; font-size: 0.85rem; }
+}
 
-    .navbar-links {
-        gap: 0.75rem;
-        font-size: 0.85rem;
-    }
+@media (max-width: 420px) {
+  .navbar { flex-direction: column; align-items: flex-start; }
+  .navbar-brand { font-size: 1.2rem; }
+  .navbar-links { width: 100%; gap: 0.5rem; font-size: 0.82rem; }
 }

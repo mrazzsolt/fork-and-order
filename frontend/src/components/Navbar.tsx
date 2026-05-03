@@ -5,7 +5,7 @@ import './Navbar.css'
 
 export default function Navbar() {
   const { count } = useCart()
-  const { isLoggedIn, logout } = useAuth()
+  const { isLoggedIn, isAdmin, logout } = useAuth()
 
   return (
     <nav className="navbar">
@@ -15,6 +15,7 @@ export default function Navbar() {
         {isLoggedIn ? (
           <>
             <Link to="/orders">Order History</Link>
+            {isAdmin && <Link to="/admin">Admin</Link>}
             <button onClick={logout} className="btn-logout">Logout</button>
           </>
         ) : (

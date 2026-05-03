@@ -26,3 +26,7 @@ class OrderResponse(BaseModel):
     items: list[OrderItemResponse] = []
 
     model_config = {"from_attributes": True}
+
+
+class OrderStatusUpdate(BaseModel):
+    status: str

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
-from app.routers import foods, auth, orders
+from app.routers import foods, auth, orders, admin
 
 Base.metadata.create_all(bind=engine)
 
@@ -18,6 +18,7 @@ app.add_middleware(
 app.include_router(foods.router)
 app.include_router(auth.router)
 app.include_router(orders.router)
+app.include_router(admin.router)
 
 @app.get("/api/health")
 async def health_check():

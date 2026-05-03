@@ -1,18 +1,25 @@
 .page-title {
-  font-size: 1.8rem;
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
 
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .status-msg {
   text-align: center;
-  padding: 3rem;
+  padding: 3rem 1rem;
   color: var(--text-muted);
 }
 
@@ -20,7 +27,7 @@
 
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 1rem;
   color: var(--text-muted);
 }
 
