@@ -166,7 +166,7 @@ fork-and-order/
 #### 1. Projekt klónozása
 
 ```bash
-git clone https://github.com/felhasznalonev/fork-and-order.git
+git clone https://github.com/mrazzsolt/fork-and-order.git
 cd fork-and-order
 ```
 
@@ -195,12 +195,6 @@ Ez automatikusan:
 
 ```bash
 docker compose down
-```
-
-#### Leállítás + adatbázis törlése (clean start)
-
-```bash
-docker compose down -v
 ```
 
 ---
